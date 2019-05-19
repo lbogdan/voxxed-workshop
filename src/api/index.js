@@ -7,5 +7,10 @@ export async function getMovies() {
 }
 
 export function updateMovie(movie) {
-  axios.put(`${apiBaseURL}/movies/${movie.id}`, movie);
+  return axios.put(`${apiBaseURL}/movies/${movie.id}`, movie);
+}
+
+export async function getMovie(id) {
+  return (await axios.get(`${apiBaseURL}/movies/${id}`)).data;
+}
 }
