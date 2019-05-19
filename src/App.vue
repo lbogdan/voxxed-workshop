@@ -12,6 +12,7 @@
         v-for="movie in movies"
         :movie="movie"
         :key="movie.id"
+        @update="updateMovie"
       />
     </div>
   </div>
@@ -20,7 +21,7 @@
 <script>
 import MovieCard from './components/MovieCard.vue';
 import Loader from './components/Loader.vue';
-import { getMovies } from './api';
+import { getMovies, updateMovie } from './api';
 
 export default {
   name: 'app',
@@ -38,6 +39,9 @@ export default {
     this.loading = true;
     this.movies = await getMovies();
     this.loading = false;
+  },
+  methods: {
+    updateMovie,
   },
 };
 </script>
