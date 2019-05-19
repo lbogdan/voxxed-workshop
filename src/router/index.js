@@ -10,8 +10,15 @@ export default new VueRouter({
   routes: [
     {
       path: '/',
-      component: MovieList,
+      redirect: {
+        name: 'movie-list',
+      },
       name: 'home',
+    },
+    {
+      path: '/movies',
+      component: MovieList,
+      name: 'movie-list',
     },
   ],
 });
