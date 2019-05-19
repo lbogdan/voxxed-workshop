@@ -12,9 +12,9 @@
 </template>
 
 <script>
-import MovieCard from '../components/MovieCard.vue';
-import Loader from '../components/Loader.vue';
-import { getMovies, updateMovie } from '../api';
+import MovieCard from '@/components/MovieCard.vue';
+import Loader from '@/components/Loader.vue';
+import { getMovies, updateMovie } from '@/api';
 
 export default {
   name: 'movie-list',

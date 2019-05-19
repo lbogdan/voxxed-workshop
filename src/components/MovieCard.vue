@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import MovieComment from './MovieComment.vue';
+import MovieComment from '@/components/MovieComment.vue';
 
 export default {
   name: 'movie-card',
