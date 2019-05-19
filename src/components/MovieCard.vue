@@ -18,7 +18,11 @@
           @update="$emit('update', { ...movie, comment: $event })"
         />
         <div class="card-action">
-          <a class="btn indigo accent-2" href="#" disabled>Edit movie</a>&#8203;
+          <router-link
+            :to="{ name: 'movie', params: { id: movie.id } }"
+            class="btn indigo accent-2"
+            >Edit movie</router-link
+          >&#8203;
           <button class="btn deep-orange" disabled>Delete movie</button>
         </div>
       </div>
