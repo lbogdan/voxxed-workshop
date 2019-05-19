@@ -15,6 +15,7 @@
         :movie="movie"
         :key="movie.id"
         @update="updateMovie"
+        @delete="deleteMovie"
       />
     </template>
   </div>
@@ -23,7 +24,7 @@
 <script>
 import MovieCard from '@/components/MovieCard.vue';
 import Loader from '@/components/Loader.vue';
-import { getMovies, updateMovie } from '@/api';
+import { getMovies, updateMovie, deleteMovie } from '@/api';
 
 export default {
   name: 'movie-list',
@@ -55,6 +56,12 @@ export default {
   },
   methods: {
     updateMovie,
+    async deleteMovie(movie) {
+      if (confirm(`Are you sure you want to delete "${movie.title}"?`)) {
+        await deleteMovie(movie);
+        this.movies.splice(this.movies.findIndex(m => m.id === movie.id));
+      }
+    },
   },
 };
 </script>

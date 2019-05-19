@@ -23,7 +23,9 @@
             class="btn indigo accent-2"
             >Edit movie</router-link
           >&#8203;
-          <button class="btn deep-orange" disabled>Delete movie</button>
+          <button class="btn deep-orange" @click="$emit('delete', movie)">
+            Delete movie
+          </button>
         </div>
       </div>
     </div>

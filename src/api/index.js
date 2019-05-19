@@ -17,3 +17,7 @@ export async function getMovie(id) {
 export async function createMovie(movie) {
   return axios.post(`${apiBaseURL}/movies`, movie);
 }
+
+export async function deleteMovie(movie) {
+  return axios.delete(`${apiBaseURL}/movies/${movie.id}`);
+}
