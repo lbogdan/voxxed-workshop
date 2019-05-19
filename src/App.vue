@@ -6,42 +6,18 @@
       </div>
     </nav>
     <div class="section">
-      <loader v-if="loading" text="Loading movies" />
-      <movie-card
-        v-else
-        v-for="movie in movies"
-        :movie="movie"
-        :key="movie.id"
-        @update="updateMovie"
-      />
+      <movie-list />
     </div>
   </div>
 </template>
 
 <script>
-import MovieCard from './components/MovieCard.vue';
-import Loader from './components/Loader.vue';
-import { getMovies, updateMovie } from './api';
+import MovieList from './pages/MovieList.vue';
 
 export default {
   name: 'app',
   components: {
-    MovieCard,
-    Loader,
-  },
-  data() {
-    return {
-      loading: false,
-      movies: [],
-    };
-  },
-  async created() {
-    this.loading = true;
-    this.movies = await getMovies();
-    this.loading = false;
-  },
-  methods: {
-    updateMovie,
+    MovieList,
   },
 };
 </script>
