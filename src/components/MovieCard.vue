@@ -13,6 +13,7 @@
           <span class="genre">{{ movie.genre }}</span>
         </div>
         <p>{{ movie.plot }}</p>
+        <movie-comment />
         <div class="card-action">
           <a class="btn indigo accent-2" href="#" disabled>Edit movie</a>&#8203;
           <button class="btn deep-orange" disabled>Delete movie</button>
@@ -23,8 +24,13 @@
 </template>
 
 <script>
+import MovieComment from './MovieComment.vue';
+
 export default {
   name: 'movie-card',
+  components: {
+    MovieComment,
+  },
   props: {
     movie: {
       required: true,
