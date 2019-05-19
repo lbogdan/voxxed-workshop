@@ -25,18 +25,11 @@
 <script>
 export default {
   name: 'movie-card',
-  data() {
-    return {
-      movie: {
-        title: 'Star Wars: The Last Jedi',
-        year: 2017,
-        genre: 'Action, Adventure, Fantasy ',
-        plot:
-          'Rey develops her newly discovered abilities with the guidance of Luke Skywalker, who is unsettled by the strength of her powers. Meanwhile, the Resistance prepares for battle with the First Order.',
-        poster:
-          'https://images-na.ssl-images-amazon.com/images/I/51poKKV63GL.jpg',
-      },
-    };
+  props: {
+    movie: {
+      required: true,
+      type: Object,
+    },
   },
 };
 </script>
