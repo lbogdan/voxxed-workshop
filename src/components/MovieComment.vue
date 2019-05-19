@@ -7,11 +7,7 @@
         {{ wordCount }} word(s)
       </div>
     </div>
-    <button
-      class="btn-flat"
-      :disabled="wordCount === 0"
-      @click="editing = false"
-    >
+    <button class="btn-flat" :disabled="wordCount === 0" @click="save">
       Save comment
     </button>
   </div>
@@ -44,6 +40,12 @@ export default {
   computed: {
     wordCount() {
       return this.localComment.split(/\s+/).filter(word => word !== '').length;
+    },
+  },
+  methods: {
+    save() {
+      this.$emit('update', this.localComment);
+      this.editing = false;
     },
   },
 };
