@@ -1,7 +1,7 @@
 <template>
   <div v-if="editing" class="comment">
     <div class="input-field">
-      <textarea v-model="comment" class="materialize-textarea"></textarea>
+      <textarea v-model="localComment" class="materialize-textarea"></textarea>
       <label>Comment</label>
       <div :class="[`wordcount${wordCount > 0 ? '--valid' : ''}`]">
         {{ wordCount }} word(s)
@@ -20,7 +20,7 @@
       {{ wordCount ? 'Comment:' : 'No comment yet.' }}
     </span>
     <p>
-      {{ comment }}
+      {{ localComment }}
     </p>
     <button class="btn-flat" @click="editing = true">Edit comment</button>
   </div>
@@ -31,13 +31,19 @@ export default {
   name: 'movie-comment',
   data() {
     return {
-      comment: '',
+      localComment: this.comment,
       editing: false,
     };
   },
+  props: {
+    comment: {
+      required: true,
+      type: String,
+    },
+  },
   computed: {
     wordCount() {
-      return this.comment.split(/\s+/).filter(word => word !== '').length;
+      return this.localComment.split(/\s+/).filter(word => word !== '').length;
     },
   },
 };

@@ -29,6 +29,7 @@ export default {
           'Rey develops her newly discovered abilities with the guidance of Luke Skywalker, who is unsettled by the strength of her powers. Meanwhile, the Resistance prepares for battle with the First Order.',
         poster:
           'https://images-na.ssl-images-amazon.com/images/I/51poKKV63GL.jpg',
+        comment: 'Some comment here.',
       },
     };
   },
