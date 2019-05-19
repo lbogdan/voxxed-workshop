@@ -18,6 +18,7 @@ export default {
 </script>
 
 <style>
+@import url(https://fonts.googleapis.com/icon?family=Material+Icons);
 .nav-wrapper {
   padding: 0 1em;
 }

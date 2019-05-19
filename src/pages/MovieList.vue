@@ -5,8 +5,13 @@
       <router-link :to="{ name: 'movie', params: { id: 'new' } }" class="btn"
         >Add movie</router-link
       >
+      <div class="search input-field">
+        <i class="material-icons prefix">search</i>
+        <input v-model="filter" type="text" />
+        <label class="">Search movies</label>
+      </div>
       <movie-card
-        v-for="movie in movies"
+        v-for="movie in filteredMovies"
         :movie="movie"
         :key="movie.id"
         @update="updateMovie"
@@ -30,7 +35,18 @@ export default {
     return {
       loading: false,
       movies: [],
+      filter: '',
     };
+  },
+  computed: {
+    filteredMovies() {
+      if (this.filter === '') {
+        return this.movies;
+      }
+      return this.movies.filter(movie =>
+        movie.title.toLowerCase().includes(this.filter.toLowerCase())
+      );
+    },
   },
   async created() {
     this.loading = true;
