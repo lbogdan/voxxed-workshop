@@ -6,19 +6,14 @@
       </div>
     </nav>
     <div class="section">
-      <movie-list />
+      <router-view />
     </div>
   </div>
 </template>
 
 <script>
-import MovieList from '@/pages/MovieList.vue';
-
 export default {
   name: 'app',
-  components: {
-    MovieList,
-  },
 };
 </script>
 
