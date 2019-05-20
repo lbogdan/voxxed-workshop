@@ -1,5 +1,8 @@
 <template>
-  <div>
+  <layout>
+    <template v-slot:title>
+      Movie List
+    </template>
     <loader v-if="loading" text="Loading movies" />
     <template v-else>
       <router-link :to="{ name: 'movie', params: { id: 'new' } }" class="btn"
@@ -18,12 +21,13 @@
         @delete="deleteMovie"
       />
     </template>
-  </div>
+  </layout>
 </template>
 
 <script>
 import MovieCard from '@/components/MovieCard.vue';
 import Loader from '@/components/Loader.vue';
+import Layout from '@/pages/Layout.vue';
 import { getMovies, updateMovie, deleteMovie } from '@/api';
 
 export default {
@@ -31,6 +35,7 @@ export default {
   components: {
     MovieCard,
     Loader,
+    Layout,
   },
   data() {
     return {

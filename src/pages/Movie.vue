@@ -1,18 +1,22 @@
 <template>
-  <div>
-    <loader v-if="loading" text="Loading movie" />
-    <movie-form
-      v-else
-      :movie="movie"
-      @cancel="$router.push({ name: 'movie-list' })"
-      @update="update"
-    />
-  </div>
+  <layout>
+    <template v-slot:title>{{ `${isNew ? 'Add' : 'Edit'} Movie` }}</template>
+    <div>
+      <loader v-if="loading" text="Loading movie" />
+      <movie-form
+        v-else
+        :movie="movie"
+        @cancel="$router.push({ name: 'movie-list' })"
+        @update="update"
+      />
+    </div>
+  </layout>
 </template>
 
 <script>
 import MovieForm from '@/components/MovieForm.vue';
 import Loader from '@/components/Loader.vue';
+import Layout from '@/pages/Layout.vue';
 import { getMovie, updateMovie, createMovie } from '@/api';
 
 export default {
@@ -20,6 +24,7 @@ export default {
   components: {
     MovieForm,
     Loader,
+    Layout,
   },
   data() {
     return {
@@ -34,13 +39,18 @@ export default {
       },
     };
   },
+  computed: {
+    isNew() {
+      return this.id === 'new';
+    },
+  },
   props: {
     id: {
       type: [Number, String],
     },
   },
   async created() {
-    if (this.id !== 'new') {
+    if (!this.isNew) {
       this.loading = true;
       this.movie = await getMovie(this.id);
       this.loading = false;

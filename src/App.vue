@@ -1,14 +1,5 @@
 <template>
-  <div id="app">
-    <nav>
-      <div class="nav-wrapper indigo darken-1">
-        <span class="brand-logo">Movies App</span>
-      </div>
-    </nav>
-    <div class="section">
-      <router-view />
-    </div>
-  </div>
+  <router-view id="app" />
 </template>
 
 <script>
