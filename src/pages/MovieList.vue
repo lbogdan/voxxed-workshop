@@ -29,7 +29,6 @@ import { mapGetters } from 'vuex';
 import MovieCard from '@/components/MovieCard.vue';
 import Loader from '@/components/Loader.vue';
 import Layout from '@/pages/Layout.vue';
-import { updateMovie, deleteMovie } from '@/api';
 
 export default {
   name: 'movie-list',
@@ -61,11 +60,12 @@ export default {
     this.$store.dispatch('loadMovies');
   },
   methods: {
-    updateMovie,
+    updateMovie(movie) {
+      this.$store.dispatch('updateMovie', movie);
+    },
     async deleteMovie(movie) {
       if (confirm(`Are you sure you want to delete "${movie.title}"?`)) {
-        await deleteMovie(movie);
-        this.movies.splice(this.movies.findIndex(m => m.id === movie.id));
+        this.$store.dispatch('deleteMovie', movie);
       }
     },
   },

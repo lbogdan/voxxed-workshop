@@ -55,6 +55,13 @@ export default new Vuex.Store({
       // state.movies[movie.id] = movie !!!not reactive!!!
       state.movies = { ...state.movies, [movie.id]: movie };
     },
+    deleteMovie(state, movie) {
+      state.movieList.splice(state.movieList.indexOf(movie.id), 1);
+    },
+    addMovie(state, movie) {
+      state.movies = { ...state.movies, [movie.id]: movie };
+      state.movieList.push(movie.id);
+    },
   },
 
   actions: {
@@ -73,6 +80,18 @@ export default new Vuex.Store({
         commit('setMovie', movie);
         commit('setMovieLoading', false);
       }
+    },
+    async updateMovie({ commit }, movie) {
+      const newMovie = await api.updateMovie(movie);
+      commit('setMovie', newMovie);
+    },
+    async deleteMovie({ commit }, movie) {
+      await api.deleteMovie(movie);
+      commit('deleteMovie', movie);
+    },
+    async createMovie({ commit }, movie) {
+      const newMovie = await api.createMovie(movie);
+      commit('addMovie', newMovie);
     },
   },
 });

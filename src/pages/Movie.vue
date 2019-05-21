@@ -18,7 +18,6 @@ import { mapGetters } from 'vuex';
 import MovieForm from '@/components/MovieForm.vue';
 import Loader from '@/components/Loader.vue';
 import Layout from '@/pages/Layout.vue';
-import { updateMovie, createMovie } from '@/api';
 
 export default {
   name: 'movie',
@@ -47,9 +46,9 @@ export default {
   methods: {
     async update(movie) {
       if ('id' in movie) {
-        await updateMovie(movie);
+        await this.$store.dispatch('updateMovie', movie);
       } else {
-        await createMovie(movie);
+        await this.$store.dispatch('createMovie', movie);
       }
       this.$router.push({ name: 'movie-list' });
     },

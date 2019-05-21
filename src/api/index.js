@@ -6,8 +6,8 @@ export async function getMovies() {
   return (await axios.get(`${apiBaseURL}/movies`)).data;
 }
 
-export function updateMovie(movie) {
-  return axios.put(`${apiBaseURL}/movies/${movie.id}`, movie);
+export async function updateMovie(movie) {
+  return (await axios.put(`${apiBaseURL}/movies/${movie.id}`, movie)).data;
 }
 
 export async function getMovie(id) {
@@ -15,7 +15,7 @@ export async function getMovie(id) {
 }
 
 export async function createMovie(movie) {
-  return axios.post(`${apiBaseURL}/movies`, movie);
+  return (await axios.post(`${apiBaseURL}/movies`, movie)).data;
 }
 
 export async function deleteMovie(movie) {
