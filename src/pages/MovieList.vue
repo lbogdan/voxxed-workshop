@@ -1,13 +1,17 @@
 <template>
   <div>
     <loader v-if="loading" text="Loading movies" />
-    <movie-card
-      v-else
-      v-for="movie in movies"
-      :movie="movie"
-      :key="movie.id"
-      @update="updateMovie"
-    />
+    <template v-else>
+      <router-link :to="{ name: 'movie', params: { id: 'new' } }" class="btn"
+        >Add movie</router-link
+      >
+      <movie-card
+        v-for="movie in movies"
+        :movie="movie"
+        :key="movie.id"
+        @update="updateMovie"
+      />
+    </template>
   </div>
 </template>
 

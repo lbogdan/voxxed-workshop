@@ -2,7 +2,7 @@
   <div class="card">
     <div class="card-content">
       <form @submit.prevent="$emit('update', localMovie)">
-        <span class="card-title">Edit movie</span>
+        <span class="card-title">{{ isNew ? 'Add' : 'Edit' }} movie</span>
         <div class="row">
           <div class="col s8">
             <div class="input-field">
@@ -51,7 +51,8 @@
           </div>
         </div>
         <div class="card-action">
-          <button class="btn">Update movie</button>&#8203;
+          <button class="btn">{{ isNew ? 'Add' : 'Update' }} movie</button
+          >&#8203;
           <a class="btn deep-orange" @click.prevent="$emit('cancel')">Cancel</a>
         </div>
       </form>
@@ -71,6 +72,11 @@ export default {
     movie: {
       required: true,
       type: Object,
+    },
+  },
+  computed: {
+    isNew() {
+      return !('id' in this.movie);
     },
   },
 };

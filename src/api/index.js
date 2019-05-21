@@ -13,4 +13,7 @@ export function updateMovie(movie) {
 export async function getMovie(id) {
   return (await axios.get(`${apiBaseURL}/movies/${id}`)).data;
 }
+
+export async function createMovie(movie) {
+  return axios.post(`${apiBaseURL}/movies`, movie);
 }

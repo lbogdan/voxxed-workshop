@@ -13,7 +13,7 @@
 <script>
 import MovieForm from '@/components/MovieForm.vue';
 import Loader from '@/components/Loader.vue';
-import { getMovie, updateMovie } from '@/api';
+import { getMovie, updateMovie, createMovie } from '@/api';
 
 export default {
   name: 'movie',
@@ -24,7 +24,14 @@ export default {
   data() {
     return {
       loading: false,
-      movie: {},
+      movie: {
+        title: '',
+        year: '',
+        genre: '',
+        plot: '',
+        poster: '',
+        comment: '',
+      },
     };
   },
   props: {
@@ -33,13 +40,19 @@ export default {
     },
   },
   async created() {
-    this.loading = true;
-    this.movie = await getMovie(this.id);
-    this.loading = false;
+    if (this.id !== 'new') {
+      this.loading = true;
+      this.movie = await getMovie(this.id);
+      this.loading = false;
+    }
   },
   methods: {
     async update(movie) {
-      await updateMovie(movie);
+      if ('id' in movie) {
+        await updateMovie(movie);
+      } else {
+        await createMovie(movie);
+      }
       this.$router.push({ name: 'movie-list' });
     },
   },
