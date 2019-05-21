@@ -28,7 +28,7 @@
 import MovieCard from '@/components/MovieCard.vue';
 import Loader from '@/components/Loader.vue';
 import Layout from '@/pages/Layout.vue';
-import { getMovies, updateMovie, deleteMovie } from '@/api';
+import { updateMovie, deleteMovie } from '@/api';
 
 export default {
   name: 'movie-list',
@@ -39,12 +39,16 @@ export default {
   },
   data() {
     return {
-      loading: false,
-      movies: [],
       filter: '',
     };
   },
   computed: {
+    loading() {
+      return this.$store.getters.moviesLoading;
+    },
+    movies() {
+      return this.$store.getters.movies;
+    },
     filteredMovies() {
       if (this.filter === '') {
         return this.movies;
@@ -55,9 +59,7 @@ export default {
     },
   },
   async created() {
-    this.loading = true;
-    this.movies = await getMovies();
-    this.loading = false;
+    this.$store.dispatch('loadMovies');
   },
   methods: {
     updateMovie,
