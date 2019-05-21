@@ -22,7 +22,7 @@ while (stillHaveTimeLeft()) {
 
 - makes simple things look simple, and complex ones look... well, complex
   - & complexity should come from the problem we're solving
-  - & usually induced by UI/UX (e.g. confirm() vs. modals)
+  - & usually induced by UI/UX patterns (e.g. `confirm()` vs. modals)
 - & best suited to get into modern frontend development: if you already know HTML, JavaScript & CSS, you know 90% of Vue.js
 - & progressive: start with `vue`, add `vue-router`, `vuex`, TypeScript etc. as needed
 - & top-notch documentation
@@ -97,6 +97,7 @@ root
 ## `<script>`
 
 - exports the component object definition
+- supports TypeScript `lang="ts"`
 
 ```html
 <script>
@@ -116,6 +117,12 @@ root
   }
 </script>
 ```
+
+## `<style>`
+
+- just CSS
+- can be `scoped`
+- supports Less, SCSS etc. `lang="scss"`
 
 ## Component Object Definition (cont.)
 
