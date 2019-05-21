@@ -25,6 +25,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 import MovieCard from '@/components/MovieCard.vue';
 import Loader from '@/components/Loader.vue';
 import Layout from '@/pages/Layout.vue';
@@ -43,12 +44,10 @@ export default {
     };
   },
   computed: {
-    loading() {
-      return this.$store.getters.moviesLoading;
-    },
-    movies() {
-      return this.$store.getters.movies;
-    },
+    ...mapGetters({
+      loading: 'moviesLoading',
+      movies: 'movies',
+    }),
     filteredMovies() {
       if (this.filter === '') {
         return this.movies;
