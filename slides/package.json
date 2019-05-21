@@ -1,0 +1,15 @@
+{
+  "name": "slides",
+  "version": "0.1.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "node md2reveal",
+    "serve": "yarn build && serve"
+  },
+  "devDependencies": {
+    "markdown-it": "^8.4.2",
+    "serve": "^11.0.0"
+  },
+  "dependencies": {}
+}
