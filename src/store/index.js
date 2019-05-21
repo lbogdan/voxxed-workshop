@@ -6,6 +6,8 @@ import * as api from '@/api';
 Vue.use(Vuex);
 
 export default new Vuex.Store({
+  strict: true,
+
   state: {
     movieList: [], // list of ids
     movies: {}, // id: movie

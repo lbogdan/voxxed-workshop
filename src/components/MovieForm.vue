@@ -65,7 +65,7 @@ export default {
   name: 'movie-form',
   data() {
     return {
-      localMovie: this.movie,
+      localMovie: { ...this.movie },
     };
   },
   props: {
