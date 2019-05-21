@@ -5,7 +5,7 @@
       <loader v-if="loading" text="Loading movie" />
       <movie-form
         v-else
-        :movie="movie"
+        :movie="movie(id)"
         @cancel="$router.push({ name: 'movie-list' })"
         @update="update"
       />
@@ -14,10 +14,11 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 import MovieForm from '@/components/MovieForm.vue';
 import Loader from '@/components/Loader.vue';
 import Layout from '@/pages/Layout.vue';
-import { getMovie, updateMovie, createMovie } from '@/api';
+import { updateMovie, createMovie } from '@/api';
 
 export default {
   name: 'movie',
@@ -26,20 +27,11 @@ export default {
     Loader,
     Layout,
   },
-  data() {
-    return {
-      loading: false,
-      movie: {
-        title: '',
-        year: '',
-        genre: '',
-        plot: '',
-        poster: '',
-        comment: '',
-      },
-    };
-  },
   computed: {
+    ...mapGetters({
+      loading: 'movieLoading',
+      movie: 'movie',
+    }),
     isNew() {
       return this.id === 'new';
     },
@@ -50,11 +42,7 @@ export default {
     },
   },
   async created() {
-    if (!this.isNew) {
-      this.loading = true;
-      this.movie = await getMovie(this.id);
-      this.loading = false;
-    }
+    this.$store.dispatch('loadMovie', this.id);
   },
   methods: {
     async update(movie) {
