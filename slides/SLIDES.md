@@ -1,10 +1,10 @@
 ## Agenda
 
-- go over 20-something step-by-step commits
-- topics:
+- (hopefully) we'll cover:
   - components, state, reactivity, ...
   - routing: `vue-router`
   - state management: `vuex`
+- go over 20-something step-by-step commits
 
 ```js
 let topic = 'Single File Components';
@@ -16,7 +16,7 @@ while (stillHaveTimeLeft()) {
 }
 ```
 
-- 15m coffee break when you get bored
+- 5m coffee break when / if you get bored
 
 ## Why Vue.js?
 
@@ -121,6 +121,7 @@ root
 
 - it has a completely different "schema" than component instances
 - if the component has a `<template>`, it's compiled to a `render()` method
+- also supports `JSX` when using a `render()` method
 
 ## Local Component Registration
 
@@ -750,7 +751,7 @@ export default new Vuex.Store({
 
 - put all asynchronous logic here
 - do async logic, then call a mutation
-- takes as arguments the context (`{ state, commit, ... }`) and an optional payload
+- takes as arguments a `context` object (`{ state, commit, ... }`) and an optional payload
 - try to not rely on the returned value, use a getter instead
 
 ```js

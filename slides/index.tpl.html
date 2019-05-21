@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
 
-    <title>reveal.js – The HTML Presentation Framework</title>
+    <title>One Application, 3 Frameworks :: Vue.js</title>
 
     <meta
       name="description"
@@ -107,12 +107,6 @@
               sysadmin, networking, backend, frontend, ...
             </li>
             <li class="fragment">
-              dev&ops @<a href="https://codesandbox.io/s/vue" target="_blank"
-                >CodeSandbox.io</a
-              >
-              — "The online code editor for Web"
-            </li>
-            <li class="fragment">
               Vue.js instructor @<a href="https://jsleague.ro/" target="_blank"
                 >JSLeague</a
               >
@@ -124,6 +118,16 @@
               >
               — BogdanL
             </li>
+            <li class="fragment">
+              dev&ops @<a href="https://codesandbox.io/s/vue" target="_blank"
+                >CodeSandbox.io</a
+              >
+              — "The online code editor for Web"
+            </li>
+            <ul>
+              <li class="fragment">even nicer <a href="https://codesandbox.io/s/github/lbogdan/voxxed-workshop/tree/master" target="_blank">codesandbox.io/s/github/lbogdan/voxxed-workshop/tree/master</a> 🤯</li>
+              <li class="fragment">even nicerer <a href="https://codesandbox.io/s/github/lbogdan/vue-intro-workshop-api" target="_blank">codesandbox.io/s/github/lbogdan/vue-intro-workshop-api</a> 🤯🤯</li>
+            </ul>
           </ul>
         </section>
 
@@ -167,22 +171,22 @@
         zoomLevel: 1.5,
       });
 
-      window.addEventListener('mousedown', handleClick, false);
-      window.addEventListener(
-        'contextmenu',
-        function(e) {
-          e.preventDefault();
-        },
-        false
-      );
+      // window.addEventListener('mousedown', handleClick, false);
+      // window.addEventListener(
+      //   'contextmenu',
+      //   function(e) {
+      //     e.preventDefault();
+      //   },
+      //   false
+      // );
 
-      function handleClick(e) {
-        if (e.target.tagName !== 'A') {
-          e.preventDefault();
-          if (e.button === 0) Reveal.prev();
-          if (e.button === 2) Reveal.next();
-        }
-      }
+      // function handleClick(e) {
+      //   if (e.target.tagName !== 'A') {
+      //     e.preventDefault();
+      //     if (e.button === 0) Reveal.prev();
+      //     if (e.button === 2) Reveal.next();
+      //   }
+      // }
     </script>
   </body>
 </html>
